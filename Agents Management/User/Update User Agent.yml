@@ -1,0 +1,57 @@
+info:
+  name: Update User Agent
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/agents/1/user-agent"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: My Custom Agent
+      - name: status
+        type: text
+        value: active
+      - name: personality
+        type: text
+        value: friendly
+      - name: agent_gender
+        type: text
+        value: female
+      - name: customize_configuration
+        type: text
+        value: '{"greeting_message": "Hello! How can I assist you today?"}'
+      - name: company_details
+        type: text
+        value: '{"name": "Acme Corp", "industry": "Technology"}'
+      - name: agent_business_data
+        type: text
+        value: '{"operating_hours": "9-5", "contact_email": "info@acmecorp.com"}'
+      - name: escalation_rules
+        type: text
+        value: '[{"condition": "unresolved_after_3_attempts", "action": "notify_human_agent"}]'
+      - name: _method
+        type: text
+        value: PUT
+        description: Required for Laravel to treat MULTIPART/FORM-DATA POST as PUT
+      - name: knowledge_files[0]
+        type: file
+        value: []
+        description: Upload knowledge base files (pdf, txt, doc, docx, csv, json)
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Update user agent configuration using POST method with form data. This endpoint accepts form data for all fields including JSON fields (customize_configuration, company_details, agent_business_data, escalation_rules) and file uploads (knowledge_files). You can update any combination of: name, status, personality, agent_gender, customize_configuration, company_details, agent_business_data, escalation_rules, and upload knowledge_files."

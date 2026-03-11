@@ -1,0 +1,22 @@
+info:
+  name: Stop Impersonation
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/impersonate/stop"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Stop being impersonated (user side). Requires user auth token.

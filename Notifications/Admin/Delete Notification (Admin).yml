@@ -1,0 +1,22 @@
+info:
+  name: Delete Notification (Admin)
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/v1/shared/notifications/12"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Delete a specific notification"

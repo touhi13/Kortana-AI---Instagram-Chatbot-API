@@ -1,0 +1,7 @@
+info:
+  name: Subscription Packages (Admin)
+  type: folder
+  seq: 11
+
+request:
+  auth: inherit

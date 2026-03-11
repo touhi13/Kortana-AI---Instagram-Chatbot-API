@@ -1,0 +1,30 @@
+info:
+  name: Update Agent Status (Admin)
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/admin/agents/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "is_active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Update agent status (activate/deactivate)"

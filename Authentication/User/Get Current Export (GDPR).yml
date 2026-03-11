@@ -1,0 +1,22 @@
+info:
+  name: Get Current Export (GDPR)
+  type: http
+  seq: 12
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/auth/export"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get the current/latest data export for the authenticated user. Returns the most recent export that is either pending, processing, or completed (not yet expired). Use this endpoint on page load to check if there's an active export request. GDPR Article 20 - Right to Data Portability.

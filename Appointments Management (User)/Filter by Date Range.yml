@@ -1,0 +1,35 @@
+info:
+  name: Filter by Date Range
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/appointments?date_from=2025-08-01&date_to=2025-08-31&per_page=15"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  params:
+    - name: date_from
+      value: 2025-08-01
+      type: query
+      description: Start date (YYYY-MM-DD)
+    - name: date_to
+      value: 2025-08-31
+      type: query
+      description: End date (YYYY-MM-DD)
+    - name: per_page
+      value: "15"
+      type: query
+      description: Items per page
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Filter appointments by date range

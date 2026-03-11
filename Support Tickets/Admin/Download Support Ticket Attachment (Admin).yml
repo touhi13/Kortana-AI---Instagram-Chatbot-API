@@ -1,0 +1,22 @@
+info:
+  name: Download Support Ticket Attachment (Admin)
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/admin/support-ticket/attachment/1/download"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Download support ticket attachment"

@@ -1,0 +1,56 @@
+info:
+  name: Update Demo Chat Settings
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/admin/setting"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "demo_chat_enabled": 1,
+        "demo_message_limit": 10,
+        "demo_agent_name": "Sarah",
+        "demo_agent_personality": "friendly and professional",
+        "demo_company_name": "Los Auto Works",
+        "demo_company_phone": "(555) 123-4567",
+        "demo_company_email": "info@losautoworks.com",
+        "demo_company_address": "123 Main St, Los Angeles, CA",
+        "demo_language": "en",
+        "demo_timezone": "America/New_York",
+        "demo_services": "[{\"name\":\"Full Vehicle Wrap\",\"price\":2500,\"duration\":\"240 min\"},{\"name\":\"Partial Vehicle Wrap\",\"price\":1500,\"duration\":\"180 min\"},{\"name\":\"Paint Protection Film\",\"price\":1200,\"duration\":\"120 min\"}]",
+        "demo_business_hours": "{\"monday\":{\"open\":\"09:00\",\"close\":\"17:00\"},\"tuesday\":{\"open\":\"09:00\",\"close\":\"17:00\"},\"wednesday\":{\"open\":\"09:00\",\"close\":\"17:00\"},\"thursday\":{\"open\":\"09:00\",\"close\":\"17:00\"},\"friday\":{\"open\":\"09:00\",\"close\":\"17:00\"},\"saturday\":{\"open\":\"10:00\",\"close\":\"14:00\"},\"sunday\":\"closed\"}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Update demo chat settings. Uses the same PUT /admin/setting endpoint. All fields are optional (sometimes).
+
+  Fields:
+  - demo_chat_enabled (boolean): Enable/disable the demo chatbot
+  - demo_message_limit (integer, 1-100): Max messages per demo session
+  - demo_agent_name (string, max:100): AI agent display name
+  - demo_agent_personality (string, max:500): Agent personality description
+  - demo_company_name (string, max:200): Company name shown in demo
+  - demo_company_phone (string, max:50): Company phone number
+  - demo_company_email (string, max:200): Company email
+  - demo_company_address (string, max:500): Company address
+  - demo_language (string, max:10): Language code (e.g. 'en')
+  - demo_timezone (string, max:50): Timezone (e.g. 'America/New_York')
+  - demo_services (json string): Array of services with name, price, duration
+  - demo_business_hours (json string): Object with day keys and open/close times

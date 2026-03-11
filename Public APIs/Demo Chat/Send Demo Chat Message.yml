@@ -1,0 +1,47 @@
+info:
+  name: Send Demo Chat Message
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/public/demo/chat"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "message": "Hello, I want to book an appointment.",
+        "session_id": "550e8400-e29b-41d4-a716-446655440000",
+        "history": [
+          { "role": "user", "text": "Hi" },
+          { "role": "bot", "text": "Hello! How can I help you today?" }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Send a message to the demo AI chatbot. Returns the AI response, contextual quick-reply suggestions, session ID, and remaining message count. Rate limited to 30 requests per minute. Session is limited to a configurable number of messages (default 10). No authentication required.
+
+  Request body:
+  - message (required|string|max:500): The user's message
+  - session_id (required|string|uuid): Client-generated UUID for session tracking
+  - history (optional|array|max:20): Previous conversation messages
+    - role (required): "user" or "bot"
+    - text (required|string|max:1000): Message content
+
+  Response includes:
+  - response: AI-generated reply text
+  - suggestions: 2-3 contextual quick-reply options based on the conversation
+  - session_id: The session UUID
+  - messages_remaining: How many messages the user has left

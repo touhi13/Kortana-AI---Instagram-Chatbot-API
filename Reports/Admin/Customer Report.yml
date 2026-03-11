@@ -1,0 +1,22 @@
+info:
+  name: Customer Report
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/admin/reports/customers"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

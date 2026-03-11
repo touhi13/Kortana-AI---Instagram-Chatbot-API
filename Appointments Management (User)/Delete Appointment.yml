@@ -1,0 +1,22 @@
+info:
+  name: Delete Appointment
+  type: http
+  seq: 18
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/v1/appointments/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete an appointment permanently

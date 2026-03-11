@@ -1,0 +1,30 @@
+info:
+  name: Update Lead Status
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/admin/leads/1/status"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "status": "completed"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update lead status (pending, link_sent, scheduled, completed, cancelled)

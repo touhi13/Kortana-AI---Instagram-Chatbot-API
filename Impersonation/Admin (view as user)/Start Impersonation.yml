@@ -1,0 +1,45 @@
+info:
+  name: Start Impersonation
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/admin/impersonate/1"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "if (res.getStatus() === 200) {\r
+
+        \    const response = res.getBody();\r
+
+        \    if (response.data && response.data.token) {\r
+
+        \        bru.setEnvVar('auth_token', response.data.token);\r
+
+        \        if (response.data.user) {\r
+
+        \            bru.setEnvVar('impersonated_user_id', response.data.user.id);\r
+
+        \            bru.setEnvVar('impersonated_user_email', response.data.user.email || '');\r
+
+        \        }\r
+
+        \    }\r
+
+        }"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Start impersonating a user. Replace 1 in the path with target user id. Requires admin auth token. On success, the returned token is saved to auth_token so you can call user-side endpoints (e.g. Get User Profile, Stop Impersonation) as that user.

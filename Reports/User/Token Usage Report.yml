@@ -1,0 +1,52 @@
+info:
+  name: Token Usage Report
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/reports/tokens?per_page=15&start_date=2025-01-01&end_date=2025-10-18"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: per_page
+      value: "15"
+      type: query
+      description: Number of items per page
+    - name: page
+      value: "1"
+      type: query
+      description: Page number
+      disabled: true
+    - name: start_date
+      value: 2025-01-01
+      type: query
+      description: Start date for token analysis (YYYY-MM-DD)
+    - name: end_date
+      value: 2025-10-18
+      type: query
+      description: End date for token analysis (YYYY-MM-DD)
+    - name: platform
+      value: instagram
+      type: query
+      description: Filter by platform (instagram, facebook, etc.)
+      disabled: true
+    - name: search
+      value: ""
+      type: query
+      description: Search in message content or sender ID
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get token usage report with per-message token details, pagination, and metrics. Returns paginated items with timestamp (formatted as 'Oct 9, 06:11 PM'), output_tokens, input_tokens, and total_tokens, pagination info, and metrics as array of objects [{title, value}] including Total Messages, Total Input Tokens, Total Output Tokens, Avg Input Tokens, Avg Output Tokens, and Token Efficiency (output/total ratio).

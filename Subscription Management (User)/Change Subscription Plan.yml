@@ -1,0 +1,43 @@
+info:
+  name: Change Subscription Plan
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/subscription/change-plan"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "package_id": 
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Change subscription plan (upgrade or downgrade).
+
+  Body:
+  - package_id (required|integer): The new package ID
+  - immediate (required|boolean): If true, change takes effect immediately. If false, scheduled for end of billing period.
+
+  Behavior:
+  - Upgrade + immediate=true: Charges prorated amount NOW
+  - Upgrade + immediate=false: Scheduled for end of billing period (no charge until then)
+  - Downgrade + immediate=true: Changes NOW, credit applied for unused time
+  - Downgrade + immediate=false: Scheduled for end of billing period
+
+  Returns: type (new|upgrade|downgrade), immediate (boolean), subscription, scheduled_at (if not immediate), message, and warnings if applicable.

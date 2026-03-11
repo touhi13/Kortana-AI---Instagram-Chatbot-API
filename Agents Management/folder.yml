@@ -1,0 +1,7 @@
+info:
+  name: Agents Management
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit

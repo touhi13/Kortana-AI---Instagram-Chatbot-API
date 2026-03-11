@@ -1,0 +1,40 @@
+info:
+  name: Reply to Customer on Instagram
+  type: http
+  seq: 21
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/appointments/405/reply"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "message": "Hello, Hellooo, Chatbot Testing 123!! Hello!"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Admin reply to customer on Instagram. This endpoint allows admins to send messages directly to customers who booked appointments through Instagram. The appointment must have Instagram platform information (platform_name = 'instagram' and platform_customer_id).
+
+  Required fields:
+  - message: Text message to send (max 2000 characters)
+
+  Optional fields:
+  - media_url: URL to media file (image, video, audio, file)
+  - media_type: Type of media (image, video, audio, file)
+
+  Note: This endpoint will automatically send the message to the customer's Instagram account using the stored Instagram token for authentication.

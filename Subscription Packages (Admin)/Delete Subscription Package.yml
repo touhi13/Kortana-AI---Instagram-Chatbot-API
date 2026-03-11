@@ -1,0 +1,22 @@
+info:
+  name: Delete Subscription Package
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/v1/admin/packages/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete a subscription package permanently

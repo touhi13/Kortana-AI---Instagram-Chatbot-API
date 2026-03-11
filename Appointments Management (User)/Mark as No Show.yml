@@ -1,0 +1,31 @@
+info:
+  name: Mark as No Show
+  type: http
+  seq: 16
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/appointments/1/status"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "status": "no_show",
+        "notes": "Customer did not show up for the appointment"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Mark appointment as no-show using universal status endpoint

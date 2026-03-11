@@ -1,0 +1,22 @@
+info:
+  name: Get Packages for Dropdown
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/admin/packages/dropdown"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Get packages formatted for dropdown selection (simplified data for UI components)"

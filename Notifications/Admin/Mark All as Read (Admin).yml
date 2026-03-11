@@ -1,0 +1,22 @@
+info:
+  name: Mark All as Read (Admin)
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/shared/notifications/mark-all-read"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Mark all notifications as read"

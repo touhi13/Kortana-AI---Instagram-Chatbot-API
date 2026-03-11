@@ -1,0 +1,32 @@
+info:
+  name: Submit Support Feedback
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/feedback"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "rating": 5,
+        "comment": "Excellent support service! The team was very helpful and resolved my issue quickly.",
+        "ticket_id": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Submit feedback for support ticket resolution

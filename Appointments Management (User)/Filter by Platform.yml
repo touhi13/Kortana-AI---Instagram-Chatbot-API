@@ -1,0 +1,31 @@
+info:
+  name: Filter by Platform
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/appointments?platform=instagram&per_page=15"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  params:
+    - name: platform
+      value: instagram
+      type: query
+      description: Filter by platform key
+    - name: per_page
+      value: "15"
+      type: query
+      description: Items per page
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Filter appointments by platform

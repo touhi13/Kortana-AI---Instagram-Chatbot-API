@@ -1,0 +1,24 @@
+info:
+  name: Dashboard Overview
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/reports"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Get main dashboard summary data including appointments, agents, customers overview, and charts. The response includes 5 charts: monthly_revenue (line chart), appointment_status (doughnut chart), service_performance (bar chart), daily_bookings (line chart showing last 30 days), and daily_token_usage (line chart showing daily token consumption with total messages and tokens per day for the last 30 days)."

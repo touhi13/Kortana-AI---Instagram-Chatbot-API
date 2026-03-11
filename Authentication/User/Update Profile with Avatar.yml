@@ -1,0 +1,29 @@
+info:
+  name: Update Profile with Avatar
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/auth/profile"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+  body:
+    type: multipart-form
+    data:
+      - name: avatar
+        type: file
+        value:
+          - XpoDyZcSK/robot-img.png
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update the user's profile with an avatar

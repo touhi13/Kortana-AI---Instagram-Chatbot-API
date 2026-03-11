@@ -1,0 +1,31 @@
+info:
+  name: Confirm Appointment
+  type: http
+  seq: 13
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/appointments/1/status"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "status": "confirmed",
+        "notes": "Customer confirmed via phone call"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Confirm an appointment using universal status endpoint

@@ -1,0 +1,52 @@
+info:
+  name: Update Subscription Package
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/admin/packages/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Premium Plan Updated",
+        "description": "Updated premium subscription with enhanced features",
+        "monthly_price": 129.99,
+        "yearly_price": 1299.99,
+        "stripe_product_id": null,
+        "stripe_monthly_price_id": null,
+        "stripe_yearly_price_id": null,
+        "monthly_discount_id": 1,
+        "monthly_discount_starts_at": "2026-03-01 00:00:00",
+        "monthly_discount_ends_at": "2026-12-31 23:59:59",
+        "yearly_discount_id": 2,
+        "yearly_discount_starts_at": "2026-03-01 00:00:00",
+        "yearly_discount_ends_at": "2026-12-31 23:59:59",
+        "max_agents": 2000,
+        "max_messages_per_month": 200000,
+        "max_knowledge_files": 2000,
+        "max_file_token_size": 200000,
+        "max_tokens": 1000000,
+        "max_appointments": 1000,
+        "priority_support": true,
+        "context_retention_minutes": 120,
+        "is_active": true,
+        "sort_order": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update an existing subscription package

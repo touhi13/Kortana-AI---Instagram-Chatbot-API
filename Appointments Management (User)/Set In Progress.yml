@@ -1,0 +1,31 @@
+info:
+  name: Set In Progress
+  type: http
+  seq: 17
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/appointments/1/status"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "status": "in_progress",
+        "notes": "Service has started"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Set appointment status to in-progress using universal status endpoint

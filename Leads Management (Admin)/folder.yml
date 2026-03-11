@@ -1,0 +1,7 @@
+info:
+  name: Leads Management (Admin)
+  type: folder
+  seq: 19
+
+request:
+  auth: inherit

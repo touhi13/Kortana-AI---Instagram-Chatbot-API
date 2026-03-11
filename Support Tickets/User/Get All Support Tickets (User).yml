@@ -1,0 +1,31 @@
+info:
+  name: Get All Support Tickets (User)
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/support-ticket?per_page=15&page=1"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  params:
+    - name: per_page
+      value: "15"
+      type: query
+      description: Number of tickets per page
+    - name: page
+      value: "1"
+      type: query
+      description: Page number
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "User: Get all support tickets with pagination"

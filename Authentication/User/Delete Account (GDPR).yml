@@ -1,0 +1,31 @@
+info:
+  name: Delete Account (GDPR)
+  type: http
+  seq: 11
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/v1/auth/account"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "password": "StrongP@ssw0rd",
+        "confirm_deletion": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete user account (GDPR Article 17 - Right to Erasure). Requires password confirmation and confirm_deletion=true. User must cancel active subscriptions first.

@@ -1,0 +1,22 @@
+info:
+  name: Check Impersonation
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/impersonate/check"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Check if current session is impersonated (user side). Requires user auth token.

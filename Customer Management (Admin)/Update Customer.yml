@@ -1,0 +1,45 @@
+info:
+  name: Update Customer
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/admin/customers/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "first_name": "John",
+        "last_name": "Smith",
+        "email": "john.smith@example.com",
+        "phone": "+1234567890",
+        "company": "Acme Corp",
+        "address": "456 Oak Ave, City, State 12345",
+        "timezone": "America/Los_Angeles",
+        "about": "Senior software developer with 8 years experience",
+        "subscription_package_id": 2,
+        "payment_amount": 199.99,
+        "payment_method": "bank_transfer",
+        "payment_reference": "TXN987654321",
+        "payment_notes": "Upgrade payment processed",
+        "admin_notes": "Customer upgraded to enterprise package",
+        "starts_immediately": false,
+        "update_package_action": "update"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Update customer information"

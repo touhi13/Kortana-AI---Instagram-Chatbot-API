@@ -1,0 +1,22 @@
+info:
+  name: Close Escalation
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/escalations/1/close"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Mark an escalation as closed

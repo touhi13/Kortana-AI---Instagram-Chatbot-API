@@ -1,0 +1,52 @@
+info:
+  name: Create Subscription Package
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/admin/packages"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Premium Plan",
+        "description": "Premium subscription with advanced features",
+        "monthly_price": 99.99,
+        "yearly_price": 999.99,
+        "stripe_product_id": null,
+        "stripe_monthly_price_id": null,
+        "stripe_yearly_price_id": null,
+        "monthly_discount_id": null,
+        "monthly_discount_starts_at": null,
+        "monthly_discount_ends_at": null,
+        "yearly_discount_id": null,
+        "yearly_discount_starts_at": null,
+        "yearly_discount_ends_at": null,
+        "max_agents": 1000,
+        "max_messages_per_month": 100000,
+        "max_knowledge_files": 1000,
+        "max_file_token_size": 100000,
+        "max_tokens": 500000,
+        "max_appointments": 500,
+        "priority_support": true,
+        "context_retention_minutes": 60,
+        "is_active": true,
+        "sort_order": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a new subscription package

@@ -1,0 +1,24 @@
+info:
+  name: Delete Discount
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/v1/admin/discounts/:discount"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+  params:
+    - name: discount
+      value: ""
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

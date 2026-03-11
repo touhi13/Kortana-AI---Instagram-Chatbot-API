@@ -1,0 +1,22 @@
+info:
+  name: Get Support Ticket Details (User)
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/support-ticket/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "User: Get details of a specific support ticket"

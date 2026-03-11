@@ -1,0 +1,7 @@
+info:
+  name: Subscription Management (User)
+  type: folder
+  seq: 23
+
+request:
+  auth: inherit

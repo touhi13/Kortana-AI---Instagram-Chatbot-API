@@ -1,0 +1,32 @@
+info:
+  name: Get Package Price & Discount History
+  type: http
+  seq: 10
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/admin/packages/1/price-history?per_page=15"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+  params:
+    - name: per_page
+      value: "15"
+      type: query
+      description: Items per page
+    - name: page
+      value: "1"
+      type: query
+      description: Page number
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Get chronological history of price and discount changes for a package. Each record shows: prices, discounts, action (created/price_changed/discount_assigned/discount_removed/discount_expired), who made the change, and the time period (started_at/ended_at) it was active."

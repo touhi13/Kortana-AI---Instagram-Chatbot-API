@@ -1,0 +1,28 @@
+info:
+  name: Unsubscribe from Agent
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/agents/unsubscribe"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  body:
+    type: text
+    data: |-
+      {
+          "agent_id": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Unsubscribe from an agent type - returns: name, key, description, is_active, is_subscribed"

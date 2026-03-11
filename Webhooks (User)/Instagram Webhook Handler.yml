@@ -1,0 +1,47 @@
+info:
+  name: Instagram Webhook Handler
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/api/webhooks/instagram"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: X-Hub-Signature-256
+      value: sha256=SIGNATURE_HASH
+  body:
+    type: json
+    data: |-
+      {
+          "object": "page",
+          "entry": [
+              {
+                  "id": "17841475512211505",
+                  "time": 1234567890,
+                  "messaging": [
+                      {
+                          "sender": {
+                              "id": "1234567890"
+                          },
+                          "recipient": {
+                              "id": "17841475512211505"
+                          },
+                          "timestamp": 1234567890,
+                          "message": {
+                              "mid": "message_id",
+                              "text": "Hello, I need help with my order"
+                          }
+                      }
+                  ]
+              }
+          ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

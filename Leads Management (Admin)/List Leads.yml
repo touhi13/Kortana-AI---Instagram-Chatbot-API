@@ -1,0 +1,39 @@
+info:
+  name: List Leads
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/admin/leads?page=1&per_page=15&status=pending&search=john"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+  params:
+    - name: page
+      value: "1"
+      type: query
+      description: Page number
+    - name: per_page
+      value: "15"
+      type: query
+      description: Items per page
+    - name: status
+      value: pending
+      type: query
+      description: Filter by status (pending, link_sent, scheduled, completed, cancelled)
+    - name: search
+      value: john
+      type: query
+      description: Search by name, email, or lead number
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get all leads with filtering and pagination

@@ -1,0 +1,7 @@
+info:
+  name: Google Calendar (Admin)
+  type: folder
+  seq: 20
+
+request:
+  auth: inherit

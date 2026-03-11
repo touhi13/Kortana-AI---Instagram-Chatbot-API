@@ -1,0 +1,7 @@
+info:
+  name: Instagram Authentication (User)
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit

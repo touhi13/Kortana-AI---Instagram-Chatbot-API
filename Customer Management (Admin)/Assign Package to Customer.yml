@@ -1,0 +1,37 @@
+info:
+  name: Assign Package to Customer
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/admin/customers/1/assign-package"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "subscription_package_id": 1,
+        "payment_amount": 99.99,
+        "payment_method": "credit_card",
+        "payment_reference": "TXN123456789",
+        "payment_notes": "Payment processed successfully",
+        "admin_notes": "Customer upgraded to premium package",
+        "starts_immediately": true,
+        "action": "assign"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Assign a subscription package to a customer"

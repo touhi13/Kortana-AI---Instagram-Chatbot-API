@@ -1,0 +1,22 @@
+info:
+  name: Delete Knowledge File
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/v1/agents/{{agent_id}}/user-agent/knowledge/{{file_id}}"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete a knowledge file from a user agent.

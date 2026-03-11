@@ -1,0 +1,36 @@
+info:
+  name: Update Profile
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/auth/profile"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+  body:
+    type: json
+    data: |-
+      {
+        "first_name": "John",
+        "last_name": "Smith",
+        "phone": "+1234567890",
+        "address": "456 New St, City, Country",
+        "company": "New Corp Ltd",
+        "timezone": "Europe/London",
+        "about": "Updated profile information"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update the user's profile information

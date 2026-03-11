@@ -1,0 +1,25 @@
+info:
+  name: Instagram Webhook Verification
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/api/webhooks/instagram?hub.mode=subscribe&hub.challenge=CHALLENGE_VALUE&hub.verify_token=kortana_webhook_verify_2024"
+  params:
+    - name: hub.mode
+      value: subscribe
+      type: query
+    - name: hub.challenge
+      value: CHALLENGE_VALUE
+      type: query
+    - name: hub.verify_token
+      value: kortana_webhook_verify_2024
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

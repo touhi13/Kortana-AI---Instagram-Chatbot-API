@@ -1,0 +1,35 @@
+info:
+  name: PUT FAQ
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/admin/faqs/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: "{\r
+
+      \    \"question\": \"Task???\",\r
+
+      \    \"answer\": \"Appointment\",\r
+
+      \    \"is_active\": true,\r
+
+      \    \"order\": 1\r
+
+      }"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

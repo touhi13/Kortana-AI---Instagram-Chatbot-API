@@ -1,0 +1,22 @@
+info:
+  name: Get Available Statuses
+  type: http
+  seq: 19
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/appointments/meta/statuses"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get all available appointment statuses

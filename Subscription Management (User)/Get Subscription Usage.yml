@@ -1,0 +1,22 @@
+info:
+  name: Get Subscription Usage
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/subscription/usage"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get current subscription usage and limits. Returns usage data including agents, messages, and tokens with their used/limit values.

@@ -1,0 +1,33 @@
+info:
+  name: Update Discount
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/admin/discounts/:discount"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  params:
+    - name: discount
+      value: ""
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Updated Sale Name",
+          "is_active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

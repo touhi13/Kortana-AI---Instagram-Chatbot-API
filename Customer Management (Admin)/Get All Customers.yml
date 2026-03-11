@@ -1,0 +1,29 @@
+info:
+  name: Get All Customers
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/admin/customers?per_page=15&page=1"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+  params:
+    - name: per_page
+      value: "15"
+      type: query
+    - name: page
+      value: "1"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Get all customers with pagination and optional statistics"

@@ -1,0 +1,29 @@
+info:
+  name: Get Available Slots
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/public/book/{{booking_token}}/slots?date=2025-12-20&timezone=America/New_York"
+  headers:
+    - name: Accept
+      value: application/json
+  params:
+    - name: date
+      value: 2025-12-20
+      type: query
+      description: Date to check available slots (YYYY-MM-DD)
+    - name: timezone
+      value: America/New_York
+      type: query
+      description: Customer's timezone
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get available time slots for a specific date. No authentication required.

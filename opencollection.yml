@@ -1,0 +1,27 @@
+opencollection: 1.0.0
+
+info:
+  name: Kortana AI - Instagram Chatbot API
+
+request:
+  variables:
+    - name: base_url
+      value: https://kortana-ai.loca.lt
+    - name: auth_token
+      value: ""
+    - name: admin_auth_token
+      value: ""
+    - name: booking_token
+      value: ""
+    - name: base_url
+      value: ""
+
+docs:
+  content: Complete API collection for testing Kortana AI Instagram Chatbot endpoints
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

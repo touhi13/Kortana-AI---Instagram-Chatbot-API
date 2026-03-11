@@ -1,0 +1,44 @@
+info:
+  name: OTP Verify
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/auth/otp-verify"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "email": "user@example.com",
+          "otp": "123456"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "if (res.getStatus() === 200) {\r
+
+        \    const response = res.getBody();\r
+
+        \    if (response.data && response.data.token) {\r
+
+        \        bru.setEnvVar('auth_token', response.data.token);\r
+
+        \    }\r
+
+        }"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Step 2 of password reset (or email verification): Verify OTP. Returns a bearer token — for password_reset type, use that token in the Reset Password request."

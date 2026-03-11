@@ -1,0 +1,39 @@
+info:
+  name: Get Auth URL
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/admin/google-calendar/auth-url"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "if (res.getStatus() === 200) {\r
+
+        \    const response = res.getBody();\r
+
+        \    if (response.data && response.data.auth_url) {\r
+
+        \        bru.setEnvVar('google_auth_url', response.data.auth_url);\r
+
+        \        console.log('Google Auth URL saved');\r
+
+        \    }\r
+
+        }"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get the Google OAuth authorization URL. Open this URL in browser to authorize.

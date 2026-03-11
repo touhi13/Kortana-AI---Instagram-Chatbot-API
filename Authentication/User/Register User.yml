@@ -1,0 +1,70 @@
+info:
+  name: Register User
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/auth/register"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "wawijad116@gopicta.com",
+        "password": "Pa$$w0rd!",
+        "password_confirmation": "Pa$$w0rd!",
+        "phone": "+1234567890",
+        "address": "123 Main St, City, Country",
+        "company": "Example Corp",
+        "timezone": "America/New_York",
+        "about": "Software developer with 5 years of experience"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "if (res.getStatus() === 200) {\r
+
+        \    try {\r
+
+        \        const response = res.getBody();\r
+
+        \        if (response.data && response.data.token) {\r
+
+        \            bru.setEnvVar('auth_token', response.data.token);\r
+
+        \            console.log(\"Token saved to environment: \", response.data.token);\r
+
+        \        } else {\r
+
+        \            console.warn(\"Token not found in response\");\r
+
+        \        }\r
+
+        \    } catch (e) {\r
+
+        \        console.error(\"Error parsing JSON response:\", e);\r
+
+        \    }\r
+
+        } else {\r
+
+        \    console.warn(\"Response code was not 200:\", res.getStatus());\r
+
+        }"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Register a new user with the updated fields

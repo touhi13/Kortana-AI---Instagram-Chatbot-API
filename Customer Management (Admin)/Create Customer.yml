@@ -1,0 +1,44 @@
+info:
+  name: Create Customer
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/admin/customers"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "john.doe@example.com",
+        "phone": "+1234567890",
+        "company": "Acme Corp",
+        "address": "123 Main St, City, State 12345",
+        "timezone": "America/New_York",
+        "about": "Software developer with 5 years experience",
+        "subscription_package_id": 1,
+        "payment_amount": 99.99,
+        "payment_method": "credit_card",
+        "payment_reference": "TXN123456789",
+        "payment_notes": "Payment processed successfully",
+        "admin_notes": "New customer onboarding",
+        "starts_immediately": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Admin: Create a new customer"

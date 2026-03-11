@@ -1,0 +1,22 @@
+info:
+  name: Disconnect Instagram
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/api/auth/instagram/disconnect"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

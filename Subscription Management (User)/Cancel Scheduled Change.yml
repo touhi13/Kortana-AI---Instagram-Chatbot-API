@@ -1,0 +1,22 @@
+info:
+  name: Cancel Scheduled Change
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/subscription/cancel-scheduled-change"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Cancel a scheduled plan change (upgrade or downgrade). Use this when a change was scheduled for end of billing period and the user wants to cancel it. Returns subscription object and confirmation message.

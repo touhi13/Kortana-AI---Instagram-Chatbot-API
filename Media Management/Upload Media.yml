@@ -1,0 +1,41 @@
+info:
+  name: Upload Media
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/media/upload"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value:
+          - /path/to/file.jpg
+      - name: model_type
+        type: text
+        value: User
+      - name: model_id
+        type: text
+        value: "{{user_id}}"
+      - name: collection
+        type: text
+        value: avatars
+      - name: custom_properties
+        type: text
+        value: '{"alt": "Profile picture", "description": "User avatar image"}'
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Upload a media file

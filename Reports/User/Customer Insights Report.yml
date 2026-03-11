@@ -1,0 +1,46 @@
+info:
+  name: Customer Insights Report
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/reports/customers?per_page=15&start_date=2025-01-01&end_date=2025-10-18&search=customer@example.com"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: per_page
+      value: "15"
+      type: query
+      description: "Number of items per page (default: 15)"
+    - name: page
+      value: "1"
+      type: query
+      description: Page number
+      disabled: true
+    - name: start_date
+      value: 2025-01-01
+      type: query
+      description: Start date for customer analysis (YYYY-MM-DD)
+    - name: end_date
+      value: 2025-10-18
+      type: query
+      description: End date for customer analysis (YYYY-MM-DD)
+    - name: search
+      value: customer@example.com
+      type: query
+      description: Search by customer email
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get customer insights report with pagination, filtering, and metrics. Returns paginated items, pagination info, and metrics as array of objects [{title, value}].

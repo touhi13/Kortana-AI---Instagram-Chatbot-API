@@ -1,0 +1,32 @@
+info:
+  name: List Media
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/media/list?model_type=User&model_id={{user_id}}&collection=avatars"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+  params:
+    - name: model_type
+      value: User
+      type: query
+    - name: model_id
+      value: "{{user_id}}"
+      type: query
+    - name: collection
+      value: avatars
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: List media files

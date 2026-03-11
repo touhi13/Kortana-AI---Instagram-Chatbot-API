@@ -1,0 +1,63 @@
+info:
+  name: Admin Login
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/admin/login"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "email": "admin@kortana.ai",
+        "password": "Admin@123",
+        "remember": false
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: "if (res.getStatus() === 200) {\r
+
+        \    try {\r
+
+        \        const response = res.getBody();\r
+
+        \        if (response.data && response.data.token) {\r
+
+        \            bru.setEnvVar('admin_auth_token', response.data.token);\r
+
+        \            console.log(\"Admin token saved to environment: \", response.data.token);\r
+
+        \        } else {\r
+
+        \            console.warn(\"Admin token not found in response\");\r
+
+        \        }\r
+
+        \    } catch (e) {\r
+
+        \        console.error(\"Error parsing JSON response:\", e);\r
+
+        \    }\r
+
+        } else {\r
+
+        \    console.warn(\"Response code was not 200:\", res.getStatus());\r
+
+        }"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Login as admin with admin credentials. Returns admin token for accessing protected admin endpoints.
