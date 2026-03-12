@@ -1,0 +1,10 @@
+name: local
+variables:
+  - name: base_url
+    value: http://127.0.01:8000
+  - secret: true
+    name: auth_token
+  - secret: true
+    name: admin_auth_token
+  - secret: true
+    name: booking_token

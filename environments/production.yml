@@ -1,0 +1,10 @@
+name: production
+variables:
+  - name: base_url
+    value: http://192.168.7.43:8000
+  - secret: true
+    name: auth_token
+  - secret: true
+    name: admin_auth_token
+  - secret: true
+    name: booking_token

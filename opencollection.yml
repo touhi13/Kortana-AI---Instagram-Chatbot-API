@@ -13,8 +13,6 @@ request:
       value: ""
     - name: booking_token
       value: ""
-    - name: base_url
-      value: ""
 
 docs:
   content: Complete API collection for testing Kortana AI Instagram Chatbot endpoints

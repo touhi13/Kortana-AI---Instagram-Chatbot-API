@@ -5,7 +5,10 @@ info:
 
 http:
   method: GET
-  url: http://
+  url: "{{base_url}}/api/health"
+  headers:
+    - name: Accept
+      value: application/json
   auth: inherit
 
 settings:

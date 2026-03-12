@@ -1,0 +1,22 @@
+name: staging
+variables:
+  - name: base_url
+    value: https://kortana-ai.loca.lt
+    enabled: true
+    secret: false
+    type: text
+  - name: auth_token
+    value: ""
+    enabled: true
+    secret: true
+    type: text
+  - name: admin_auth_token
+    value: ""
+    enabled: true
+    secret: true
+    type: text
+  - name: booking_token
+    value: ""
+    enabled: true
+    secret: true
+    type: text

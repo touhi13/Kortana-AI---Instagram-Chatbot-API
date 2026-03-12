@@ -5,7 +5,12 @@ info:
 
 http:
   method: GET
-  url: http://
+  url: "{{base_url}}/api/v1/admin/faqs/1"
+  headers:
+    - name: Authorization
+      value: Bearer {{admin_auth_token}}
+    - name: Accept
+      value: application/json
   auth: inherit
 
 settings:
