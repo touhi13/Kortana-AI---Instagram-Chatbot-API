@@ -1,0 +1,22 @@
+info:
+  name: Toggle AI
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/v1/conversations/1/toggle-ai"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Enable/disable AI for a conversation by ID

@@ -1,0 +1,32 @@
+info:
+  name: Reply to Conversation
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/conversations/1/reply"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "message": "Hello! Thanks for reaching out — how can I help?",
+        "media_url": null,
+        "media_type": null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Send a reply message to a conversation (optionally include media_url and media_type)

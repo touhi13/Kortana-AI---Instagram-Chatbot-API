@@ -1,0 +1,43 @@
+info:
+  name: List Conversations
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{base_url}}/api/v1/conversations?per_page=15&status=active&search=&is_starred=&has_appointment="
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+  params:
+    - name: per_page
+      value: "15"
+      type: query
+      description: "Number of items per page (min: 1, max: 100)"
+    - name: status
+      value: active
+      type: query
+      description: "Filter by status: active, unreplied, archived"
+    - name: search
+      value: ""
+      type: query
+      description: Search by contact name/handle/content
+    - name: is_starred
+      value: ""
+      type: query
+      description: Filter by star state (true/false)
+    - name: has_appointment
+      value: ""
+      type: query
+      description: Filter by appointment presence (true/false)
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get paginated list of inbox conversations with filters
