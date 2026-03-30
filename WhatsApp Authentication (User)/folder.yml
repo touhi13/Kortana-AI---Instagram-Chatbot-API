@@ -1,0 +1,7 @@
+info:
+  name: WhatsApp Authentication (User)
+  type: folder
+  seq: 5
+
+request:
+  auth: inherit

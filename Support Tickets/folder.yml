@@ -1,7 +1,7 @@
 info:
   name: Support Tickets
   type: folder
-  seq: 14
+  seq: 16
 
 request:
   auth: inherit

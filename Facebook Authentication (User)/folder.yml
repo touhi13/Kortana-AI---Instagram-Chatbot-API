@@ -1,0 +1,7 @@
+info:
+  name: Facebook Authentication (User)
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit

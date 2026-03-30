@@ -1,7 +1,7 @@
 info:
   name: Consent Management (User)
   type: folder
-  seq: 24
+  seq: 26
 
 request:
   auth: inherit

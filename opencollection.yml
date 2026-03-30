@@ -7,6 +7,8 @@ request:
   variables:
     - name: base_url
       value: https://kortana-ai.loca.lt
+    - name: platform_key
+      value: facebook
     - name: auth_token
       value: ""
     - name: admin_auth_token
