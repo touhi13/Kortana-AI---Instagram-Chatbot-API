@@ -1,7 +1,7 @@
 name: local
 variables:
   - name: base_url
-    value: http://127.0.01:8000
+    value: http://127.0.0.1:8000
   - secret: true
     name: auth_token
   - secret: true

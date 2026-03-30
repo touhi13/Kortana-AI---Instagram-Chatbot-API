@@ -17,7 +17,8 @@ http:
     type: json
     data: |-
       {
-          "package_id": 1
+          "package_id": 4,
+          "billing_cycle": "month"
       }
   auth: inherit
 
