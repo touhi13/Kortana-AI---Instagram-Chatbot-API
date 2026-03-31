@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{base_url}}/api/v1/auth/messenger/refresh"
+  url: "{{base_url}}/api/v1/auth/facebook/refresh"
   headers:
     - name: Authorization
       value: Bearer {{auth_token}}
