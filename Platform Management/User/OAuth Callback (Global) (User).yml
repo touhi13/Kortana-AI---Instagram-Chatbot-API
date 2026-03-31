@@ -1,7 +1,7 @@
 info:
-  name: Facebook OAuth Callback (POST)
+  name: OAuth Callback (Global) (User)
   type: http
-  seq: 2
+  seq: 3
 
 http:
   method: POST
@@ -28,5 +28,7 @@ settings:
   maxRedirects: 5
 
 docs: |
-  Exchanges `code` for tokens and connects a Facebook Page (Messenger) to the user.
+  Global OAuth callback for platform connections.
+
+  The API decrypts `state` to determine which platform (facebook/instagram) initiated the flow.
 
