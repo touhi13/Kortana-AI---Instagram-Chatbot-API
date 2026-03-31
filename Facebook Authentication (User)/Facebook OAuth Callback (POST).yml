@@ -1,0 +1,32 @@
+info:
+  name: Facebook OAuth Callback (POST)
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/api/v1/auth/messenger/callback"
+  headers:
+    - name: Authorization
+      value: Bearer {{auth_token}}
+    - name: Accept
+      value: application/json
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    json:
+      code: AUTH_CODE
+      state: STATE_VALUE
+      user_id: 1
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Exchanges `code` for tokens and connects a Facebook Page (Messenger) to the user.
+

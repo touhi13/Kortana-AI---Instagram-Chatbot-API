@@ -1,7 +1,7 @@
 info:
   name: Payment History (Admin)
   type: folder
-  seq: 13
+  seq: 15
 
 request:
   auth: inherit
